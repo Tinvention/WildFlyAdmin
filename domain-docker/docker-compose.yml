@@ -11,6 +11,7 @@ services:
   host-1:
      depends_on:
        - master
+       - domain-main-db
      ports:
        - "9991:9990"
        - "8081:8080"
@@ -22,6 +23,7 @@ services:
   host-2:
      depends_on:
        - master
+       - domain-main-db
      ports:
        - "9992:9990"
        - "8082:8080"
@@ -29,3 +31,14 @@ services:
      build:
        context: ./host-2
      command: /opt/jboss/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --host-config=host-slave-with-username.xml -Djboss.domain.master.address=master
+     
+  domain-main-db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - ./create-user-db.sql:/docker-entrypoint-initdb.d/create-user-db.sql
+    ports:
+      - 5433:5432
