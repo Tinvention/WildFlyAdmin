@@ -18,12 +18,16 @@
  *******************************************************************************/
 package net.tinvention.training.wildfly.mp.micro.profile.hw.config;
 
-import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
@@ -56,12 +60,16 @@ public class ConfigurationController {
     
     @Path("/configParams")
     @GET
-    public String configParams() {
-    	StringWriter result = new StringWriter();
-    	// Iterable<String> i = config.getPropertyNames();
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Response configParams() {
+    	Map<String, String> result = new HashMap<>();
     	config.getPropertyNames().forEach(
-    			(currName) -> result.append(currName + ": " +  config.getValue(currName, String.class) + ", ")
+    			(currName) -> result.put(currName, config.getValue(currName, String.class))
     	);    
-        return result.toString();
+    	
+    	return Response
+    		      .status(Response.Status.OK)
+    		      .entity(result)
+    		      .build();
     }
 }
