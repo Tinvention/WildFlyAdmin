@@ -21,6 +21,6 @@ package net.tinvention.training.wildfly.mp.micro.profile.hw;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/data")
+@ApplicationPath("/api")
 public class MPRestApplication extends Application {
 }

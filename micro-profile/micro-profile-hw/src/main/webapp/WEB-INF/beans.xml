@@ -3,4 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        bean-discovery-mode="all">
+       
+      <!-- 
+        The applications deployed in WildFly must have CDI enabled
+		(e.g. with a "META-INF/beans.xml") or by having CDI Bean annotation) to be able
+		to use MicroProfile Config in code.
+       --> 
+       
 </beans>
