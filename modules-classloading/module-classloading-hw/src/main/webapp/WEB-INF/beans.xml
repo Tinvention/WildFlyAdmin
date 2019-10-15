@@ -5,9 +5,7 @@
        bean-discovery-mode="all">
        
       <!-- 
-        The applications deployed in WildFly must have CDI enabled
-		(e.g. with a "META-INF/beans.xml") having CDI Bean annotation to be able
-		to use MicroProfile Config in code.
+        The applications deployed in WildFly must have CDI enabled 	(e.g. with a "META-INF/beans.xml") 
        --> 
        
 </beans>
