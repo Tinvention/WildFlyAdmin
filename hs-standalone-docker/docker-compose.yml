@@ -1,0 +1,19 @@
+version: '3.7'
+   
+services: 
+  host-1:
+    ports:
+       - "9991:9990"
+       - "8081:8080"
+       - "8231:8230"
+    build:
+       context: ./host-1
+ 
+  host-2:
+    ports:
+       - "9992:9990"
+       - "8082:8080"
+       - "8232:8230"
+    build:
+       context: ./host-2
+    

@@ -1,6 +1,6 @@
 /*******************************************************************************
  *    Copyright 2019, Tinvention SRL
- *    This project includes software developed by Tinvention - Ingegneria Informatica .
+ *    This project includes software developed by Tinvention SRL .
  *    http://tinvention.net/
  *    
  *    Licensed under the Apache License, Version 2.0 (the "License");
