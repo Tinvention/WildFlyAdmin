@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  master:
+     ports:
+       - "9990:9990"
+       - "8080:8080"
+     build:
+       context: ./master
+     command: /opt/jboss/wildfly/bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --host-config=host-master.xml --domain-config=domain-master.xml
+        
+  host-1:
+     depends_on:
+       - master
+     ports:
+       - "9991:9990"
+       - "8081:8080"
+       - "8231:8230"
+     build:
+       context: ./host-1
+
+  host-2:
+     depends_on:
+       - master
+     ports:
+       - "9992:9990"
+       - "8082:8080"
+       - "8232:8230"
+     build:
+       context: ./host-2
+     
