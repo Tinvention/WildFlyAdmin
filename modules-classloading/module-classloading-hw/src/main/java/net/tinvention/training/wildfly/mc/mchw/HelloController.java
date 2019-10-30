@@ -37,7 +37,7 @@ public class HelloController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<String[]> getYaml() throws IOException {
+	public List<String[]> getCsv() throws IOException {
 		return csvReader.deSerialize();
 	}
 }
